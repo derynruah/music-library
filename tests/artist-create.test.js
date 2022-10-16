@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable quotes */
 const { expect } = require('chai');
 const request = require('supertest');
 const getDb = require('../src/services/db');
@@ -9,7 +11,7 @@ describe('create artist', () => {
 
   afterEach(async () => {
     await db.query('DELETE FROM Artist');
-    await db.end();
+    await db.close();
   });
 
   describe('/artist', () => {

@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 // utils/create-database.js
 // require the promise version of mysql2
 const mysql = require('mysql2/promise');
@@ -16,7 +17,7 @@ require('dotenv').config({
   path: path.join(__dirname, envFile),
 });
 
-// destructure environment variables from process.env 
+// destructure environment variables from process.env
 const { DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT } = process.env;
 
 // This asyncronous function will run before app
@@ -27,22 +28,22 @@ const setUpDatabase = async () => {
       host: DB_HOST,
       user: DB_USER,
       password: DB_PASSWORD,
-      port: DB_PORT,
+      port: DB_PORT
     });
 
     // create the database if it doesn't already exist
     await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
-    await db.query(`USE ${DB_NAME}`)
+    await db.query(`USE ${DB_NAME}`);
     await db.query(`CREATE TABLE IF NOT EXISTS Artist (
-     id INT PRIMARY KEY auto_increment,
-     name VARCHAR(25),
-     genre VARCHAR(25)
-   )`);
+  id INT PRIMARY KEY auto_increment,
+  name VARCHAR(25),
+  genre VARCHAR(25)
+)`);
     db.close();
   } catch (err) {
     // if something goes wrong, console.log the error and the current environment variables
     console.log(
-      'Your environment variables might be wrong. Please double check .env file'
+      `Your environment variables might be wrong. Please double check .env file`
     );
     console.log('Environment Variables are:', {
       DB_PASSWORD,
