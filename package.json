@@ -4,10 +4,10 @@
   "description": "Applying knowledge of SQL and databases with express.js skills by writing an app for managing a music library.",
   "main": "index.js",
   "scripts": {
-    "prestart": "node utils/create-database.js",
-    "start": "nodemon -r dotenv/config index.js",
+    "prestart":"node utils/create-database.js",
+    "start": " nodemon -r dotenv/config index.js",
+    "test": "mocha tests/**/*.js --exit --recursive --timeout 60000 --file ./tests/test-setup.js",
     "pretest": "node utils/create-database.js test",
-    "test": "mocha tests/**/*.js --exit --recursive --timeout 60000 --file./tests/test-setup.js",
     "posttest": "node utils/drop-database.js"
   },
   "repository": {
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "express": "^4.18.2",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3"
   }
 }

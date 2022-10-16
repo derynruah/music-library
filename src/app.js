@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 const express = require('express');
 const artistRouter = require('./routes/artist');
 

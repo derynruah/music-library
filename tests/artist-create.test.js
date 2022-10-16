@@ -11,7 +11,7 @@ describe('create artist', () => {
 
   afterEach(async () => {
     await db.query('DELETE FROM Artist');
-    await db.close();
+    await db.end();
   });
 
   describe('/artist', () => {
@@ -19,7 +19,7 @@ describe('create artist', () => {
       it('creates a new artist in the database', async () => {
         const res = await request(app).post('/artist').send({
           name: 'Tame Impala',
-          genre: 'rock',
+          genre: 'rock'
         });
 
         expect(res.status).to.equal(201);
